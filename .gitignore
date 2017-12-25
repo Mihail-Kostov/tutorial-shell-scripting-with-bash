@@ -6,3 +6,6 @@
 note*.txt
 notes/*.txt
 shopping*.txt
+log
+logfile
+nohup.out
