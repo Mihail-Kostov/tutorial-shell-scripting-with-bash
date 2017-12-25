@@ -22,8 +22,23 @@ error () {
 } >&2
 
 # function returns 0 when it's argument is a number
+# isnum () {
+#     [[ $1 =~ ^[0-9]+$ ]] 
+# }
 isnum () {
-    [[ $1 =~ ^[0-9]+$ ]] 
+    declare -r num_re='^[0-9]+$'
+    declare -r octal_re='^0(.+)'
+    num_error="ok"
+    if [[ $1 =~ $num_re ]]; then
+        if [[ $1 =~ $octal_re ]]; then
+            num_error="$1 is not a number, did you mean ${BASH_REMATCH[1]}?"
+            return 1
+        fi
+    else
+        num_error="$1 is not a number"
+        return 1
+    fi
+    return 0
 }
 
 declare reverse=""

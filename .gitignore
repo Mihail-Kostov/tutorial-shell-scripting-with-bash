@@ -1,5 +1,8 @@
 *.zip
 *.tgz
 *.7z
+*.jpg
+*.gif
 note*.txt
+notes/*.txt
 shopping*.txt
